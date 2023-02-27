@@ -1,4 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit"
+import reducer from "./reducers"
 
 const initializeStore = (preloadedState = {}) => {
     const store = configureStore({
@@ -8,4 +9,4 @@ const initializeStore = (preloadedState = {}) => {
     return store
 }
 
-export default initializeStore
+export default initializeStore 
