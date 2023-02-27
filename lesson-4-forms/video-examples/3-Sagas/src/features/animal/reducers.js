@@ -12,21 +12,29 @@ const initialState = {
             scientific_name: null,
         },
     },
+    create: {
+        status: status.PENDING,
+    },
+    edit: {
+        status: status.PENDING,
+    },
 }
+
 
 const reducers = {
     
     createAnimal: (state) => {
-        // nothing happens here yet
+        state.create.status = status.REQUESTING
     },
     createAnimalResult: (state, { payload }) => {
+        state.create.status = status.SUCCESS
         state.list.animals = payload
     },
     createAnimalError: (state, { payload }) => {
-        // nothing happens here yet
     },
     createAnimalReset: (state) => {
-        // nothing happens here yet
+        state.create.status = status.ERROR
+        state.create.error = payload
     },
     setFormField: (state, { payload }) => {
       const current = state.form.fields
