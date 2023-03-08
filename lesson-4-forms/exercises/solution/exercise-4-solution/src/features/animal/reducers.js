@@ -40,32 +40,37 @@ const reducers = {
         state.error.message = payload
         state.form.fields = initialState.form.fields
     },
-    editAnimal: (state, { payload }) => {
-        state.edit.status = REQUESTING
-    },
     setForm: (state, { payload }) => {
         const animal = state.list.animals.find(a => a.id = payload)
-
+        
         if (animal) {
             state.form.fields = animal
         } else {
             state.error.message = `could not find animal with id: ${payload}`
         }
     },
+
+    editAnimal: (state, { payload }) => {
+        state.edit.status = REQUESTING
+    },
+
     editAnimalResult: (state, { payload }) => {
         state.edit.status = SUCCESS
         state.list.animals = payload
         state.form.fields = initialState.form.fields
         state.edit = initialState.edit
     },
+
     editAnimalError: (state) => {
         state.edit.status = ERROR
         state.error.message = payload
         state.form.fields = initialState.form.fields
     },
+
     editAnimalStatus: (state, { payload }) => {
         state.edit = payload
     },
+    
     setFormField: (state, { payload }) => {
         const current = state.form.fields
         const { field, value } = payload
